@@ -10,9 +10,6 @@ public class Controller {
 
     private List<Video> videos = new ArrayList<Video>() ;
 
-    public String getInput () {
-        return scanner.next();
-    }
     public void clearRentals() {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
@@ -37,7 +34,12 @@ public class Controller {
         String customerName = scanner.next() ;
 
         Customer foundCustomer = find_client(customerName); // 중복 코드 제거
-
+        for ( Customer customer: customers ) {
+            if ( customer.getName().equals(customerName)) {
+                foundCustomer = customer ;
+                break ;
+            }
+        }
         if ( foundCustomer == null ) return ;
 
         System.out.println("Enter video title to return: ") ;
@@ -59,8 +61,8 @@ public class Controller {
         customers.add(james) ;
         customers.add(brown) ;
 
-        Video v1 = new Video("v1", VideoType.CD.getType(), Video.REGULAR, new Date()) ;
-        Video v2 = new Video("v2", VideoType.DVD.getType(), Video.NEW_RELEASE, new Date()) ;
+        Video v1 = new Video("v1", Video.CD, Video.REGULAR, new Date()) ;
+        Video v2 = new Video("v2", Video.DVD, Video.NEW_RELEASE, new Date()) ;
         videos.add(v1) ;
         videos.add(v2) ;
 
@@ -98,7 +100,13 @@ public class Controller {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
 
-        Customer foundCustomer = find_client(customerName) ;
+        Customer foundCustomer = null ;
+        for ( Customer customer: customers ) {
+            if ( customer.getName().equals(customerName)) {
+                foundCustomer = customer ;
+                break ;
+            }
+        }
 
         if ( foundCustomer == null ) {
             System.out.println("No customer found") ;

@@ -66,19 +66,5 @@ public class Video {
 	public void setVideoType(int videoType) {
 		this.videoType = videoType;
 	}
-
-	public int getCharge(int daysRented) {
-		int eachCharge = 0;
-		switch (getPriceCode()) {
-		case Video.REGULAR:
-			eachCharge += 2;
-			if (daysRented > 2)
-				eachCharge += (daysRented - 2) * 1.5;
-			break;
-		case Video.NEW_RELEASE:
-			eachCharge = daysRented * 3;
-			break;
-		}
-		return eachCharge;
-	}
+	
 }
