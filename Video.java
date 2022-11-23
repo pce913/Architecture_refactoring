@@ -8,9 +8,6 @@ public class Video {
 	public static final int NEW_RELEASE =2 ;
 
 	private int videoType ;
-	public static final int VHS = 1 ;
-	public static final int CD = 2 ;
-	public static final int DVD = 3 ;
 
 	private Date registeredDate ;
 	private boolean rented ;
@@ -23,14 +20,9 @@ public class Video {
 	}
 
 	public int getLateReturnPointPenalty() {
-		int pentalty = 0 ;
-		switch ( videoType ) {
-			case VHS: pentalty = 1 ; break ;
-			case CD: pentalty = 2 ; break ;
-			case DVD: pentalty = 3 ; break ;
-		}
-		return pentalty ;
+		return getVideoType().getPentalty();
 	}
+
 	public int getPriceCode() {
 		return priceCode;
 	}
@@ -63,8 +55,12 @@ public class Video {
 		this.registeredDate = registeredDate;
 	}
 
-	public int getVideoType() {
-		return videoType;
+	public VideoType getVideoType() {
+		for (VideoType vt : VideoType.values()) {
+			if (vt.getType() == videoType)
+				return vt;
+		}
+		return VideoType.DEFAULT;
 	}
 
 	public void setVideoType(int videoType) {
