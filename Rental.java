@@ -66,13 +66,13 @@ public class Rental {
 
 	public int getDaysRented(){  // 중복코드 제거
 		int daysRented;
-		if (getStatus() == RENTAL_STATUS.RENTED) { // returned Video
-			long diff = returnDate.getTime() - returnDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
-		} else { // not yet returned
-			long diff = new Date().getTime() - returnDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
-		}
+		long diff;
+		if (getStatus() == RENTAL_STATUS.RENTED) // returned Video
+			diff = returnDate.getTime() - returnDate.getTime();
+		else// not yet returned
+			diff = new Date().getTime() - returnDate.getTime();
+		
+		daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		return daysRented;
 	}
 
