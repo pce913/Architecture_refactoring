@@ -10,7 +10,8 @@ public class VRUI {
 
       boolean quit = false ;
       while ( ! quit ) {
-         int command = ui.showCommand() ;
+         ui.showCommand() ;
+         int command = scanner.nextInt() ;
          switch ( command ) {
             
             case 0: quit = true ; break ;
@@ -30,7 +31,7 @@ public class VRUI {
    }
 
 
-   public int showCommand() {
+   public void showCommand() {
       System.out.println("\nSelect a command !");
       System.out.println("\t 0. Quit");
       System.out.println("\t 1. List customers");
@@ -41,10 +42,5 @@ public class VRUI {
       System.out.println("\t 6. Return video");
       System.out.println("\t 7. Show customer report");
       System.out.println("\t 8. Show customer and clear rentals");
-
-      int command = scanner.nextInt() ;
-
-      return command ;
-
    }
 }
