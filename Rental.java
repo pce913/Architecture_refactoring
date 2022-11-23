@@ -65,4 +65,16 @@ public class Rental {
 		}
 		return limit ;
 	}
+
+	public int getDaysRented() {
+		int ms = 1000 * 60 * 60 * 24;
+		long diff = 0;
+		if (getStatus() == 1) { // returned Video
+			diff = getReturnDate().getTime() - getRentDate().getTime();
+			
+		} else { // not yet returned
+			diff = new Date().getTime() - getRentDate().getTime();
+		}
+		return (int) (diff / ms) + 1;
+	}
 }
