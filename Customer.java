@@ -42,21 +42,10 @@ public class Customer {
 		int totalPoint = 0;
 
 		for (Rental each : rentals) {
-			double eachCharge = 0;
 			int eachPoint = 0 ;
-			int daysRented = each.getDaysRented();   // Long Method Ï§ÑÏûÑ.
-
-			switch (each.getVideo().getPriceCode()) {
-			case Video.REGULAR:
-				eachCharge += 2;
-				if (daysRented > 2)
-					eachCharge += (daysRented - 2) * 1.5;
-				break;
-			case Video.NEW_RELEASE:
-				eachCharge = daysRented * 3;
-				break;
-			}
-
+			int daysRented = each.getDaysRented();   // Long Method ¡Ÿ¿”.
+			double eachCharge = each.getVideo().getCharge(daysRented);
+			
 			eachPoint++;
 
 			if ((each.getVideo().getPriceCode() == Video.NEW_RELEASE) )
@@ -83,9 +72,5 @@ public class Customer {
 			System.out.println("Congrat! You earned two free coupon");
 		}
 		return result ;
-	}
-
-	private int daysRented(){
-
 	}
 }
