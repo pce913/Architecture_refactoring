@@ -28,8 +28,7 @@ public class Controller {
                 System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
             }
 
-            List<Rental> rentals = new ArrayList<Rental>() ;
-            foundCustomer.setRentals(rentals);
+            foundCustomer.clearRentals();
         }
     }
 

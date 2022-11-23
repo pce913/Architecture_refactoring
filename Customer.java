@@ -23,13 +23,12 @@ public class Customer {
 		return rentals;
 	}
 
-	public void setRentals(List<Rental> rentals) {
-		this.rentals = rentals;
+	public void clearRentals(){
+		rentals.clear();
 	}
 
 	public void addRental(Rental rental) {
 		rentals.add(rental);
-
 	}
 
 	//Long Metohd: SRP - Point + Charge + System.out / Logic + Rental (Divergent Change, Feature Envy)
