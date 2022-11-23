@@ -37,12 +37,7 @@ public class Controller {
         String customerName = scanner.next() ;
 
         Customer foundCustomer = find_client(customerName); // 중복 코드 제거
-        for ( Customer customer: customers ) {
-            if ( customer.getName().equals(customerName)) {
-                foundCustomer = customer ;
-                break ;
-            }
-        }
+
         if ( foundCustomer == null ) return ;
 
         System.out.println("Enter video title to return: ") ;
@@ -103,13 +98,7 @@ public class Controller {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
 
-        Customer foundCustomer = null ;
-        for ( Customer customer: customers ) {
-            if ( customer.getName().equals(customerName)) {
-                foundCustomer = customer ;
-                break ;
-            }
-        }
+        Customer foundCustomer = find_client(customerName) ;
 
         if ( foundCustomer == null ) {
             System.out.println("No customer found") ;
