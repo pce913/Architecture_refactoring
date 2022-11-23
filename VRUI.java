@@ -16,8 +16,8 @@ public class VRUI {
             case 0: quit = true ; break ;
             case 1: controller.listCustomers();
             case 2: controller.listVideos() ; break ;
-            case 3: controller.register("customer") ; break ;
-            case 4: controller.register("video") ; break ;
+            case 3: controller.register(Const.CUSTOMER) ; break ;
+            case 4: controller.register(Const.VIDEO) ; break ;
             case 5: controller.rentVideo() ; break ;
             case 6: controller.returnVideo() ; break ;
             case 7: controller.getCustomerReport() ; break;
