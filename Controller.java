@@ -1,5 +1,3 @@
-package evaluation1;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,8 +28,7 @@ public class Controller {
                 System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
             }
 
-            List<Rental> rentals = new ArrayList<Rental>() ;
-            foundCustomer.setRentals(rentals);
+            foundCustomer.clearRentals();
         }
     }
 
