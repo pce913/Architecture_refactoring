@@ -1,3 +1,5 @@
+package evaluation1;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,14 +19,7 @@ public class Controller {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
 
-        Customer foundCustomer = null ;
-        for ( Customer customer: customers ) {
-            if ( customer.getName().equals(customerName)) {
-                foundCustomer = customer ;
-                break ;
-            }
-        }
-
+        Customer foundCustomer = find_client(customerName); // 중복 코드 제거
         if ( foundCustomer == null ) {
             System.out.println("No customer found") ;
         } else {
@@ -44,7 +39,7 @@ public class Controller {
         System.out.println("Enter customer name: ") ;
         String customerName = scanner.next() ;
 
-        Customer foundCustomer = null ;
+        Customer foundCustomer = find_client(customerName); // 중복 코드 제거
         for ( Customer customer: customers ) {
             if ( customer.getName().equals(customerName)) {
                 foundCustomer = customer ;
@@ -127,41 +122,41 @@ public class Controller {
         }
     }
 
-   public void rentVideo() {
-	   System.out.println("Enter customer name: ") ;
-	   String customerName = scanner.next() ;
+    public void rentVideo() {
+        System.out.println("Enter customer name: ") ;
+        String customerName = scanner.next() ;
 
-	   Customer foundCustomer = find_client(customerName); // method 분리
-	   if ( foundCustomer == null ) return ;
+        Customer foundCustomer = find_client(customerName); // method 분리
+        if ( foundCustomer == null ) return ;
 
-	   System.out.println("Enter video title to rent: ") ;
-	   String videoTitle = scanner.next() ;
+        System.out.println("Enter video title to rent: ") ;
+        String videoTitle = scanner.next() ;
 
-	   Video foundVideo = findVideo(videoTitle); // method 분리
-	   if ( foundVideo == null ) return ;
+        Video foundVideo = findVideo(videoTitle); // method 분리
+        if ( foundVideo == null ) return ;
 
-	   Rental rental = new Rental(foundVideo) ;
-	   foundVideo.setRented(true);
-	   foundCustomer.addRental(rental); // 불필요한 rental list 접근 제거
-   }
+        Rental rental = new Rental(foundVideo) ;
+        foundVideo.setRented(true);
+        foundCustomer.addRental(rental); // 불필요한 rental list 접근 제거
+    }
 
-   private Video findVideo(String videoTitle) {
-	   for ( Video video: videos ) {
-		   if ( video.getTitle().equals(videoTitle) && video.isRented() == false ) {
-			   return video;
-		   }
-	   }
-	   return null;
-   }
+    private Video findVideo(String videoTitle) {
+        for ( Video video: videos ) {
+            if ( video.getTitle().equals(videoTitle) && video.isRented() == false ) {
+                return video;
+            }
+        }
+        return null;
+    }
 
-   private Customer find_client(String customerName) {
-	   for ( Customer customer: customers ) {
-		   if ( customer.getName().equals(customerName)) {
-			   return customer;
-		   }
-	   }
-	   return null;
-   }
+    private Customer find_client(String customerName) {
+        for ( Customer customer: customers ) {
+            if ( customer.getName().equals(customerName)) {
+                return customer;
+            }
+        }
+        return null;
+    }
 
     public void register(String object) {
         if ( object.equals(Const.CUSTOMER) ) {

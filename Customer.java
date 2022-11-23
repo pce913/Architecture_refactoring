@@ -41,6 +41,7 @@ public class Customer {
 		int totalPoint = 0;
 
 		for (Rental each : rentals) {
+
 			int daysRented = getDaysRented(each);
 			double eachCharge = getEachCharge(each, 0, daysRented);
 			int eachPoint = getEachPoint(each, 0, daysRented);
