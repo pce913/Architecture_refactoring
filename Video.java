@@ -47,14 +47,6 @@ public class Video {
 		this.rented = rented;
 	}
 
-	public Date getRegisteredDate() {
-		return registeredDate;
-	}
-
-	public void setRegisteredDate(Date registeredDate) {
-		this.registeredDate = registeredDate;
-	}
-
 	public VideoType getVideoType() {
 		for (VideoType vt : VideoType.values()) {
 			if (vt.getType() == videoType)
@@ -66,5 +58,5 @@ public class Video {
 	public void setVideoType(int videoType) {
 		this.videoType = videoType;
 	}
-	
+
 }
