@@ -59,15 +59,15 @@ public class Rental {
 		return limit ;
 	}
 
-	public int getDaysRented() {
-		int ms = 1000 * 60 * 60 * 24;
-		long diff = 0;
+	public int getDaysRented(){  // 중복코드 제거
+		int daysRented;
 		if (getStatus() == 1) { // returned Video
-			diff = getReturnDate().getTime() - getRentDate().getTime();
-			
+			long diff = returnDate.getTime() - returnDate.getTime();
+			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		} else { // not yet returned
-			diff = new Date().getTime() - getRentDate().getTime();
+			long diff = new Date().getTime() - returnDate.getTime();
+			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		}
-		return (int) (diff / ms) + 1;
+		return daysRented;
 	}
 }
